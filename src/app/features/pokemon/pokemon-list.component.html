@@ -10,30 +10,59 @@
   <div *ngIf="error$ | async as error" class="error">Erro: {{ error }}</div>
 
   <ng-container *ngIf="data$ | async as data">
-    <ng-container *ngIf="page$ | async as page">
-      <table class="pokemon-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>Favorito</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let pokemon of data.results; let i = index">
-            <td>{{ (page - 1) * pageSize + i + 1 }}</td>
-            <td>{{ pokemon.name }}</td>
-            <td>
-              <app-favorite-toggle [name]="pokemon.name"></app-favorite-toggle>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="pagination">
-        <button [disabled]="page === 1" (click)="onPageChange(page - 1)">Anterior</button>
-        <span>Página {{ page }}</span>
-        <button [disabled]="(page * pageSize) >= data.count" (click)="onPageChange(page + 1)">Próxima</button>
-      </div>
+    <ng-container *ngIf="searchControl.value; else paginatedList">
+      <ng-container *ngIf="data.count === 1 && data.detail as detail; else notFound">
+        <table class="pokemon-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Sprite</th>
+              <th>Favorito</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ detail.id }}</td>
+              <td>{{ detail.name }}</td>
+              <td><img [src]="detail.sprites.front_default" alt="{{ detail.name }}" width="48" /></td>
+              <td>
+                <app-favorite-toggle [name]="detail.name"></app-favorite-toggle>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+      <ng-template #notFound>
+        <div *ngIf="data.count === 0">Pokémon não encontrado.</div>
+      </ng-template>
     </ng-container>
+    <ng-template #paginatedList>
+      <ng-container *ngIf="page$ | async as page">
+        <table class="pokemon-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Favorito</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pokemon of data.results; let i = index">
+              <td>{{ (page - 1) * pageSize + i + 1 }}</td>
+              <td>{{ pokemon.name }}</td>
+              <td>
+                <app-favorite-toggle [name]="pokemon.name"></app-favorite-toggle>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination">
+          <button [disabled]="page === 1" (click)="onPageChange(page - 1)">Anterior</button>
+          <span>Página {{ page }}</span>
+          <button [disabled]="(page * pageSize) >= data.count" (click)="onPageChange(page + 1)">Próxima</button>
+        </div>
+      </ng-container>
+    </ng-template>
   </ng-container>
 </div> 

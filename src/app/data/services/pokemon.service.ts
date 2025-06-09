@@ -21,13 +21,15 @@ export interface PokemonDetail {
 export class PokemonService {
   private readonly apiUrl = 'https://pokeapi.co/api/v2/pokemon';
 
-  private loadingSubject = new BehaviorSubject<boolean>(false);
+  public loadingSubject = new BehaviorSubject<boolean>(false);
   private dataSubject = new BehaviorSubject<PokemonListResponse>({ count: 0, next: null, previous: null, results: [] });
-  private errorSubject = new BehaviorSubject<string | null>(null);
+  public errorSubject = new BehaviorSubject<string | null>(null);
 
   loading$ = this.loadingSubject.asObservable();
   data$ = this.dataSubject.asObservable();
   error$ = this.errorSubject.asObservable();
+
+  private allPokemonNamesCache: { name: string; url: string }[] | null = null;
 
   constructor(private http: HttpClient) {}
 
@@ -73,5 +75,23 @@ export class PokemonService {
         finalize(() => this.loadingSubject.next(false))
       )
       .subscribe();
+  }
+
+  getPokemonByNameOrId(nameOrId: string): Observable<PokemonDetail | null> {
+    return this.http.get<PokemonDetail>(`${this.apiUrl}/${nameOrId}`).pipe(
+      catchError(() => of(null))
+    );
+  }
+
+  getAllPokemonNames(): Observable<{ name: string; url: string }[]> {
+    if (this.allPokemonNamesCache) {
+      return of(this.allPokemonNamesCache);
+    }
+    return this.http.get<PokemonListResponse>(`${this.apiUrl}?offset=0&limit=1302`).pipe(
+      map(res => {
+        this.allPokemonNamesCache = res.results;
+        return res.results;
+      })
+    );
   }
 } 
