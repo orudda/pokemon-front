@@ -5,6 +5,7 @@
     {
       "name": "app",
       "installMode": "prefetch",
+      "updateMode": "prefetch",
       "resources": {
         "files": [
           "/favicon.ico",
@@ -25,6 +26,40 @@
           "/**/*.(svg|cur|jpg|jpeg|png|apng|webp|avif|gif|otf|ttf|woff|woff2)"
         ]
       }
+    },
+    {
+      "name": "main-routes",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "resources": {
+        "urls": [
+          "/",
+          "/pokemons"
+        ]
+      }
     }
-  ]
+  ],
+  "dataGroups": [
+    {
+      "name": "pokeapi",
+      "urls": [
+        "https://pokeapi.co/api/v2/**"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 100,
+        "maxAge": "1d",
+        "timeout": "10s"
+      }
+    }
+  ],
+  "navigationUrls": [
+    "/**",
+    "!/**/*.*",
+    "!/assets/**",
+    "!/api/**"
+  ],
+  "navigationFallback": {
+    "index": "/offline.html"
+  }
 }

@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Build e execução em produção
+
+1. Gere o build de produção:
+   ```sh
+   npm run build -- --configuration production
+   ```
+
+2. Sirva a aplicação com http-server (instale globalmente se necessário):
+   ```sh
+   cd pokemon-angular
+   npx http-server ./dist/pokemon-angular/browser -p 4200
+   ```
+
+3. Acesse [http://localhost:4200](http://localhost:4200) no navegador para ver a aplicação rodando em modo produção com Service Worker e cache ativados.

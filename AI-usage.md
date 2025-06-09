@@ -99,6 +99,24 @@
      - Criação do componente standalone `FavoriteToggleComponent` no shared, conectado ao serviço.
      - Integração do botão de favorito à tabela/lista de pokémons.
 
+10. **Configuração do ngsw-config.json para PWA e cache avançado:**
+    - **Prompt:**
+      > Configure o ngsw-config.json para:
+      >
+      > Cachear a PokéAPI dinamicamente
+      >
+      > Cachear assets estáticos e rotas principais
+      >
+      > Ativar uma estratégia de "Stale-While-Revalidate"
+
+    - **Ação:**
+      - O arquivo `ngsw-config.json` foi configurado para:
+        - Cache dinâmico da PokéAPI usando dataGroups.
+        - Cache de assets estáticos e rotas principais usando assetGroups.
+        - Estratégia de "Stale-While-Revalidate" (freshness) para a PokéAPI.
+        - Fallback offline configurado para `/offline.html`.
+      - Ajustes feitos para garantir compatibilidade de build e funcionamento do Service Worker.
+
 ---
 
 **Gerado por IA (ChatGPT) para rastreabilidade e documentação do setup do projeto.** 
