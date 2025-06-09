@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from '../../../node_modules/rxjs/dist/types';
 
 const FAVORITES_KEY = 'pokemon_favorites';
 

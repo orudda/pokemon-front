@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FavoriteService } from '../core/favorite.service';
-import { map } from 'rxjs';
+import { map } from '../../../node_modules/rxjs/dist/types';
 
 @Component({
   selector: 'app-favorite-toggle',

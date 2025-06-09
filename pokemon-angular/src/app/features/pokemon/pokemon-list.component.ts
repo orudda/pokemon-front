@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { PokemonService, PokemonListResponse } from '../../data/services/pokemon.service';
-import { BehaviorSubject, combineLatest, debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs';
+import { BehaviorSubject, combineLatest, debounceTime, distinctUntilChanged, map, startWith, switchMap } from '../../../../node_modules/rxjs/dist/types';
 import { CommonModule } from '@angular/common';
 import { FavoriteToggleComponent } from '../../shared/favorite-toggle.component';
 
