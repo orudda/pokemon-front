@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { PokemonTableModule } from './pokemon-table/pokemon-table.module';
 
 @NgModule({
-  imports: [RouterModule],
+  imports: [CommonModule, PokemonTableModule],
+  exports: [PokemonTableModule],
 })
 export class FeaturesModule {}

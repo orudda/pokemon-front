@@ -1,0 +1,37 @@
+<div class="pokemon-table-container">
+  <input
+    type="text"
+    placeholder="Buscar pokémon..."
+    [value]="search"
+    (input)="onSearchChange($any($event.target).value)"
+    class="search-input"
+  />
+
+  <div *ngIf="loading$ | async" class="loading">Carregando...</div>
+  <div *ngIf="error$ | async as error" class="error">Erro: {{ error }}</div>
+
+  <table *ngIf="(data$ | async) as data" class="pokemon-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nome</th>
+        <th>Detalhes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pokemon of data.results; let i = index">
+        <td>{{ (page - 1) * pageSize + i + 1 }}</td>
+        <td>{{ pokemon.name }}</td>
+        <td>
+          <button>Ver detalhes</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="data$ | async as data" class="pagination">
+    <button [disabled]="page === 1" (click)="onPageChange(page - 1)">Anterior</button>
+    <span>Página {{ page }}</span>
+    <button [disabled]="(page * pageSize) >= data.count" (click)="onPageChange(page + 1)">Próxima</button>
+  </div>
+</div> 

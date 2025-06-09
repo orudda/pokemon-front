@@ -65,6 +65,16 @@
    - **Ação:**
      - Criação deste arquivo com rastreabilidade dos comandos e prompts.
 
+7. **Criação do serviço reativo de Pokémon:**
+   - **Prompt:**
+     > Crie um PokemonService dentro do módulo data que consome a PokéAPI de forma reativa usando RxJS. O serviço deve expor métodos observáveis para:
+     >
+     > - Buscar a lista de pokémons paginada e pesquisável
+     > - Obter os detalhes de um pokémon
+     > - Tratar erros com catchError e expor loading, data e error como streams separadas usando Subjects ou BehaviorSubjects
+   - **Ação:**
+     - Implementação do serviço `PokemonService` no módulo `data` conforme solicitado, utilizando RxJS, tratamento de erros e exposição de streams reativas para loading, dados e erro.
+
 ---
 
 **Gerado por IA (ChatGPT) para rastreabilidade e documentação do setup do projeto.** 
