@@ -72,4 +72,17 @@ export class PokemonListComponent implements OnInit {
   onPageChange(newPage: number) {
     this.page$.next(newPage);
   }
+
+  getSpriteUrl(pokemon: { name: string; url: string }) {
+    const match = pokemon.url.match(/\/pokemon\/(\d+)\/?$/);
+    const id = match ? match[1] : null;
+    if (id) {
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+    }
+    return 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png'; // fallback
+  }
+
+  onSpriteError(event: Event) {
+    (event.target as HTMLImageElement).src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png';
+  }
 } 
