@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PokemonTableComponent } from './pokemon-table.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
-  { path: '', component: PokemonTableComponent }
+  { path: '', loadComponent: () => import('./pokemon-table.component').then(m => m.PokemonTableComponent) }
 ];
 
 @NgModule({
-  declarations: [PokemonTableComponent],
-  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule.forChild(routes)],
-  exports: [PokemonTableComponent]
+  imports: [CommonModule, FormsModule, RouterModule.forChild(routes)]
 })
 export class PokemonTableModule {} 

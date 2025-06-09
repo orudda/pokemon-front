@@ -75,6 +75,20 @@
    - **Ação:**
      - Implementação do serviço `PokemonService` no módulo `data` conforme solicitado, utilizando RxJS, tratamento de erros e exposição de streams reativas para loading, dados e erro.
 
+8. **Criação do componente PokemonListComponent:**
+   - **Prompt:**
+     > Crie um componente PokemonListComponent no módulo features/pokemon, com template reativo. Ele deve:
+     >
+     > Assinar os observables do PokemonService
+     >
+     > Ter um campo de busca que debounced o input com RxJS
+     >
+     > Ter paginação reativa com switchMap
+     >
+     > Mostrar loading e error com base nos observables do serviço
+   - **Ação:**
+     - Implementação do componente `PokemonListComponent` standalone, com template reativo, busca debounced, paginação reativa, integração com o serviço e exibição de loading/erro.
+
 ---
 
 **Gerado por IA (ChatGPT) para rastreabilidade e documentação do setup do projeto.** 
