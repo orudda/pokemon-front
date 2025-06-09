@@ -7,7 +7,7 @@ Este projeto é uma Single Page Application (SPA) desenvolvida em Angular 18+, c
 - Node.js 18+
 - npm 9+
 - Angular CLI (opcional, para desenvolvimento)
-- [http-server](https://www.npmjs.com/package/http-server) (para servir a aplicação em produção)
+- [serve](https://www.npmjs.com/package/serve) (para servir a aplicação em produção)
 
 ## Instalação
 
@@ -35,22 +35,15 @@ Os arquivos finais serão gerados em:
 pokemon-angular/dist/pokemon-angular/browser/
 ```
 
-## Servindo a aplicação em produção (sem a flag -s)
+## Servindo a aplicação em produção
 
-O build Angular é gerado na pasta `dist/pokemon-angular/browser`. Para servir os arquivos estáticos **sem fallback SPA** (ou seja, sem a flag `-s`), rode:
+O build Angular é gerado na pasta `dist/pokemon-angular/browser`. Para servir os arquivos estáticos em produção, rode:
 
 ```sh
-npx http-server ./dist/pokemon-angular/browser -p 8080
+npx serve ./dist/pokemon-angular/browser
 ```
 
-Acesse [http://localhost:8080](http://localhost:8080) no navegador.
-
-> **Atenção:**  
-> Sem a flag `-s`, apenas o acesso direto a `/` (ou `/index.html`) funcionará. Se você atualizar a página em uma rota diferente (ex: `/pokemons`), receberá erro 404, pois o servidor não faz fallback automático para o `index.html`.  
-> Para navegação SPA completa (atualizar/compartilhar links profundos), use a flag `-s`:
-> ```sh
-> npx http-server ./dist/pokemon-angular/browser -p 8080 -s
-> ```
+Acesse [http://localhost:3000](http://localhost:3000) no navegador (ou a porta informada pelo comando).
 
 ## Estrutura do Projeto
 
