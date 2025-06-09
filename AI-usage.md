@@ -89,6 +89,16 @@
    - **Ação:**
      - Implementação do componente `PokemonListComponent` standalone, com template reativo, busca debounced, paginação reativa, integração com o serviço e exibição de loading/erro.
 
+9. **Favoritos: FavoriteService e FavoriteToggleComponent:**
+   - **Prompt:**
+     > Implemente um FavoriteService no módulo core que armazena e recupera os pokémons favoritos usando localStorage. A lista de favoritos deve ser um observable (favorites$) com operadores RxJS. Crie também um FavoriteToggleComponent reutilizável no shared que se conecta a esse serviço.
+     >
+     > Adicione o botão de favorito à lista de pokémons.
+   - **Ação:**
+     - Implementação do serviço `FavoriteService` no core, usando localStorage e RxJS para gerenciar favoritos.
+     - Criação do componente standalone `FavoriteToggleComponent` no shared, conectado ao serviço.
+     - Integração do botão de favorito à tabela/lista de pokémons.
+
 ---
 
 **Gerado por IA (ChatGPT) para rastreabilidade e documentação do setup do projeto.** 

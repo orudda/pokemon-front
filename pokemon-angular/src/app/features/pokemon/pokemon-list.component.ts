@@ -3,11 +3,12 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { PokemonService, PokemonListResponse } from '../../data/services/pokemon.service';
 import { BehaviorSubject, combineLatest, debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { FavoriteToggleComponent } from '../../shared/favorite-toggle.component';
 
 @Component({
   selector: 'app-pokemon-list',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FavoriteToggleComponent],
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
