@@ -167,4 +167,76 @@
     font-size: 0.9rem;
     padding: 0.3rem 0.1rem;
   }
+}
+
+.favorites-btn {
+  background: #ffcb05;
+  color: #2a75bb;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(59,76,202,0.08);
+  transition: background 0.2s, color 0.2s;
+}
+.favorites-btn:hover {
+  background: #3b4cca;
+  color: #fff;
+}
+
+.favorites-modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(44, 62, 80, 0.45);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.favorites-modal {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(59,76,202,0.18);
+  border: 3px solid #ffcb05;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  min-width: 340px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalIn 0.2s;
+}
+@keyframes modalIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.close-modal-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #3b4cca;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+.close-modal-btn:hover {
+  color: #c00;
+}
+.favorites-modal h2 {
+  text-align: center;
+  color: #2a75bb;
+  margin-bottom: 1.2rem;
+  font-size: 1.5rem;
+}
+@media (max-width: 600px) {
+  .favorites-modal {
+    padding: 1rem 0.2rem 1rem 0.2rem;
+    min-width: 0;
+  }
 } 

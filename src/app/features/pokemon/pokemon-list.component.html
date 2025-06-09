@@ -3,6 +3,7 @@
     <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="PokéAPI Logo" class="pokeapi-logo" />
     <h1>Pokédex</h1>
     <p>Encontre, explore e favorite seus pokémons!</p>
+    <button class="favorites-btn" (click)="openFavoritesModal()">⭐ Favoritos</button>
   </div>
   <div class="pokemon-list-container">
     <input
@@ -81,5 +82,38 @@
         </ng-container>
       </ng-template>
     </ng-container>
+  </div>
+
+  <!-- Modal de Favoritos -->
+  <div class="favorites-modal-backdrop" *ngIf="showFavoritesModal">
+    <div class="favorites-modal">
+      <button class="close-modal-btn" (click)="closeFavoritesModal()">×</button>
+      <h2>Pokémons Favoritados</h2>
+      <ng-container *ngIf="favoritesWithSprites$ | async as favs">
+        <table class="pokemon-table themed-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Sprite</th>
+              <th>Favorito</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let fav of favs">
+              <td>{{ fav.id }}</td>
+              <td class="capitalize">{{ fav.name }}</td>
+              <td>
+                <img [src]="fav.sprite" alt="{{ fav.name }}" width="48" class="sprite-img" />
+              </td>
+              <td>
+                <app-favorite-toggle [name]="fav.name"></app-favorite-toggle>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div *ngIf="favs.length === 0" class="not-found">Nenhum pokémon favoritado ainda.</div>
+      </ng-container>
+    </div>
   </div>
 </div> 
