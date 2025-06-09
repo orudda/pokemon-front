@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from '../../../../node_modules/rxjs/dist/types';
-import { catchError, finalize, map, tap } from '../../../../node_modules/rxjs/dist/types/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, finalize, map, tap } from 'rxjs/operators';
 
 export interface PokemonListResponse {
   count: number;
