@@ -32,7 +32,19 @@
               <tr>
                 <td>{{ detail.id }}</td>
                 <td class="capitalize">{{ detail.name }}</td>
-                <td><img [src]="detail.sprites.front_default" alt="{{ detail.name }}" width="48" /></td>
+                <td>
+                  <ng-container *ngIf="!isOffline(); else offlineIcon">
+                    <img [src]="detail.sprites.front_default" alt="{{ detail.name }}" width="48" />
+                  </ng-container>
+                  <ng-template #offlineIcon>
+                    <span class="offline-sprite" title="Offline">
+                      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="22" fill="#fff" stroke="#c00" stroke-width="4"/>
+                        <text x="24" y="32" text-anchor="middle" font-size="32" fill="#c00" font-family="Arial" font-weight="bold">?</text>
+                      </svg>
+                    </span>
+                  </ng-template>
+                </td>
                 <td>
                   <app-favorite-toggle [name]="detail.name"></app-favorite-toggle>
                 </td>
@@ -60,13 +72,23 @@
                 <td>{{ (page - 1) * pageSize + i + 1 }}</td>
                 <td class="capitalize">{{ pokemon.name }}</td>
                 <td>
-                  <img
-                    [src]="getSpriteUrl(pokemon)"
-                    alt="{{ pokemon.name }}"
-                    width="48"
-                    class="sprite-img"
-                    (error)="onSpriteError($event)"
-                  />
+                  <ng-container *ngIf="!isOffline(); else offlineIcon">
+                    <img
+                      [src]="getSpriteUrl(pokemon)"
+                      alt="{{ pokemon.name }}"
+                      width="48"
+                      class="sprite-img"
+                      (error)="onSpriteError($event)"
+                    />
+                  </ng-container>
+                  <ng-template #offlineIcon>
+                    <span class="offline-sprite" title="Offline">
+                      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="22" fill="#fff" stroke="#c00" stroke-width="4"/>
+                        <text x="24" y="32" text-anchor="middle" font-size="32" fill="#c00" font-family="Arial" font-weight="bold">?</text>
+                      </svg>
+                    </span>
+                  </ng-template>
                 </td>
                 <td>
                   <app-favorite-toggle [name]="pokemon.name"></app-favorite-toggle>
@@ -104,7 +126,17 @@
               <td>{{ fav.id }}</td>
               <td class="capitalize">{{ fav.name }}</td>
               <td>
-                <img [src]="fav.sprite" alt="{{ fav.name }}" width="48" class="sprite-img" />
+                <ng-container *ngIf="!isOffline(); else offlineIconFav">
+                  <img [src]="fav.sprite" alt="{{ fav.name }}" width="48" class="sprite-img" />
+                </ng-container>
+                <ng-template #offlineIconFav>
+                  <span class="offline-sprite" title="Offline">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="24" cy="24" r="22" fill="#fff" stroke="#c00" stroke-width="4"/>
+                      <text x="24" y="32" text-anchor="middle" font-size="32" fill="#c00" font-family="Arial" font-weight="bold">?</text>
+                    </svg>
+                  </span>
+                </ng-template>
               </td>
               <td>
                 <app-favorite-toggle [name]="fav.name"></app-favorite-toggle>

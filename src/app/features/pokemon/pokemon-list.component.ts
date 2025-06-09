@@ -115,4 +115,8 @@ export class PokemonListComponent implements OnInit {
   closeFavoritesModal() {
     this.showFavoritesModal = false;
   }
+
+  isOffline() {
+    return !navigator.onLine;
+  }
 } 

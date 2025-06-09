@@ -239,4 +239,17 @@
     padding: 1rem 0.2rem 1rem 0.2rem;
     min-width: 0;
   }
+}
+
+.offline-sprite {
+  display: inline-block;
+  vertical-align: middle;
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #c00;
+  box-shadow: 0 2px 8px rgba(59,76,202,0.08);
+  text-align: center;
+  line-height: 48px;
 } 
